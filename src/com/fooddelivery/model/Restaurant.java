@@ -29,10 +29,14 @@ public class Restaurant {
 
     public void addProductToMenu(Product product, Integer quantity) {
         this.menu.put(product, quantity);
-
-
+        productService.addProduct(product, quantity);
     }
 
+    public void deleteProductFromMenu(Product product) {
+        this.menu.remove(product);
+        productService.deleteProduct(product);
+    }
+    
     @Override
     public String toString() {
         return "Restaurant{" +
