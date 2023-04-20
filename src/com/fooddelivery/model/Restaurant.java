@@ -8,7 +8,7 @@ import java.util.Objects;
 public class Restaurant {
     private Address address;
     private HashMap<Product, Integer> menu; // key = produs si value = cantitatea disponibila
-    private ProductService productService;
+    private final ProductService productService;
 
 
     public Restaurant(Address address, ProductService productService) {

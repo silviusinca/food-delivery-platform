@@ -5,6 +5,8 @@ import com.fooddelivery.enums.OrderStatus;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Order {
     private static long nextId = 0;
@@ -13,7 +15,7 @@ public class Order {
     private Client client;
     private Driver driver;
     private Restaurant restaurant;
-    private ArrayList<Product> productList;
+    private HashMap<Product, Integer> basket; // produs, cantitate
     private OrderStatus orderStatus;
     private Double price;
     private String orderDate;
@@ -22,12 +24,12 @@ public class Order {
         this.orderId = nextId++;
     }
 
-    public Order(Client client, Driver driver, Restaurant restaurant, ArrayList<Product> productList, OrderStatus orderStatus, Double price) {
+    public Order(Client client, Driver driver, Restaurant restaurant, HashMap<Product, Integer> basket, OrderStatus orderStatus, Double price) {
         this.orderId = nextId++;
         this.client = client;
         this.driver = driver;
         this.restaurant = restaurant;
-        this.productList = productList;
+        this.basket = basket;
         this.orderStatus = orderStatus;
         this.price = calculatePrice();
         this.orderDate = LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss")); // pentru a formata data
@@ -49,13 +51,13 @@ public class Order {
         this.restaurant = restaurant;
     }
 
-    public ArrayList<Product> getProductList() {
-        return productList;
+    public HashMap<Product, Integer> getProductList() {
+        return basket;
     }
 
-    public void setProductList(ArrayList<Product> productList) {
-        this.productList = productList;
-    }
+//    public void setProductList(ArrayList<Product> productList) {
+//        this.productList = productList;
+//    }
 
     public OrderStatus getOrderStatus() {
         return orderStatus;
@@ -72,8 +74,8 @@ public class Order {
     private Double calculatePrice() {
         this.price = 0d;
 
-        for (Product product : productList) {
-            this.price += product.getCost();
+        for (Map.Entry<Product, Integer> entry : basket.entrySet()) {
+            this.price += entry.getKey().getCost() * entry.getValue();
         }
 
         return this.price;
