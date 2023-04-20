@@ -10,6 +10,7 @@ public class Restaurant {
     private HashMap<Product, Integer> menu; // key = produs si value = cantitatea disponibila
     private ProductService productService;
 
+
     public Restaurant(Address address, ProductService productService) {
         this.address = address;
         this.productService = productService;

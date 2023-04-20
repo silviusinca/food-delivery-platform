@@ -11,19 +11,25 @@ public class Order {
 
     private long orderId;
     private Client client;
+    private Driver driver;
     private Restaurant restaurant;
     private ArrayList<Product> productList;
     private OrderStatus orderStatus;
     private Double price;
     private String orderDate;
 
-    public Order(Client client, Restaurant restaurant, ArrayList<Product> productList, OrderStatus orderStatus, Double price) {
+    public Order() {
+        this.orderId = nextId++;
+    }
+
+    public Order(Client client, Driver driver, Restaurant restaurant, ArrayList<Product> productList, OrderStatus orderStatus, Double price) {
         this.orderId = nextId++;
         this.client = client;
+        this.driver = driver;
         this.restaurant = restaurant;
         this.productList = productList;
         this.orderStatus = orderStatus;
-        this.price = price;
+        this.price = calculatePrice();
         this.orderDate = LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss")); // pentru a formata data
     }
 
@@ -63,9 +69,18 @@ public class Order {
         return price;
     }
 
-    public void setPrice(Double price) {
-        this.price = price;
+    private Double calculatePrice() {
+        this.price = 0d;
+
+        for (Product product : productList) {
+            this.price += product.getCost();
+        }
+
+        return this.price;
     }
+
+    public Driver getDriver() { return driver; }
+    public void setDriver(Driver driver) { this.driver = driver; }
 
     public long getOrderId() {
         return orderId;
