@@ -16,7 +16,7 @@ public class OrderService {
         newOrder.setClient(client);
         newOrder.setDriver(driver);
         newOrder.setRestaurant(restaurant);
-        newOrder.setProductList(products);
+
 
         return newOrder;
     }

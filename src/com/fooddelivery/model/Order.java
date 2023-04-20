@@ -7,11 +7,10 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.UUID;
 
 public class Order {
-    private static long nextId = 0;
-
-    private long orderId;
+    private final UUID orderId;
     private Client client;
     private Driver driver;
     private Restaurant restaurant;
@@ -21,11 +20,11 @@ public class Order {
     private String orderDate;
 
     public Order() {
-        this.orderId = nextId++;
+        this.orderId = UUID.randomUUID();
     }
 
     public Order(Client client, Driver driver, Restaurant restaurant, HashMap<Product, Integer> basket, OrderStatus orderStatus, Double price) {
-        this.orderId = nextId++;
+        this.orderId = UUID.randomUUID();
         this.client = client;
         this.driver = driver;
         this.restaurant = restaurant;
@@ -51,7 +50,7 @@ public class Order {
         this.restaurant = restaurant;
     }
 
-    public HashMap<Product, Integer> getProductList() {
+    public HashMap<Product, Integer> getBasket() {
         return basket;
     }
 
@@ -84,7 +83,7 @@ public class Order {
     public Driver getDriver() { return driver; }
     public void setDriver(Driver driver) { this.driver = driver; }
 
-    public long getOrderId() {
+    public UUID getOrderId() {
         return orderId;
     }
 }
