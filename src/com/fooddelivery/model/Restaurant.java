@@ -36,7 +36,7 @@ public class Restaurant {
         this.menu.remove(product);
         productService.deleteProduct(product);
     }
-    
+
     @Override
     public String toString() {
         return "Restaurant{" +
