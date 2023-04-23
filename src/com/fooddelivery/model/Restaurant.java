@@ -1,19 +1,21 @@
 package com.fooddelivery.model;
 
-import com.fooddelivery.service.ProductService;
-
 import java.util.HashMap;
 import java.util.Objects;
+import java.util.UUID;
 
 public class Restaurant {
+
+    private UUID restaurantId;
     private Address address;
+    private String restaurantName;
     private HashMap<Product, Integer> menu; // key = produs si value = cantitatea disponibila
-    private final ProductService productService;
 
-
-    public Restaurant(Address address, ProductService productService) {
+    public Restaurant(String restaurantName, Address address, HashMap<Product, Integer> menu) {
+        this.restaurantName = restaurantName;
         this.address = address;
-        this.productService = productService;
+        this.menu = menu;
+        this.restaurantId = UUID.randomUUID();
     }
 
     public Address getAddress() {
@@ -30,17 +32,31 @@ public class Restaurant {
 
     public void addProductToMenu(Product product, Integer quantity) {
         this.menu.put(product, quantity);
-        productService.addProduct(product, quantity);
     }
 
     public void deleteProductFromMenu(Product product) {
         this.menu.remove(product);
-        productService.deleteProduct(product);
+    }
+
+    public String getRestaurantName() {
+        return restaurantName;
+    }
+
+    public void setRestaurantName(String restaurantName) {
+        this.restaurantName = restaurantName;
+    }
+
+    public void setMenu(HashMap<Product, Integer> menu) {
+        this.menu = menu;
+    }
+
+    public UUID getRestaurantId() {
+        return restaurantId;
     }
 
     @Override
     public String toString() {
-        return "Restaurant{" +
+        return  this.restaurantName + "{" +
                 address.toString() +
                 ", products=" + menu.toString() +
                 '}';
@@ -56,6 +72,6 @@ public class Restaurant {
 
     @Override
     public int hashCode() {
-        return Objects.hash(address, menu);
+        return Objects.hash(restaurantName, address, menu);
     }
 }

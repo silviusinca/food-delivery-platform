@@ -20,6 +20,8 @@ public class Order {
 
     public Order() {
         this.orderId = UUID.randomUUID();
+        this.driver = null; // pornim cu un driver null -> handle-uim in OrderService
+        this.orderDate = LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss")); // pentru a formata data
     }
 
     public Order(Client client, Driver driver, Restaurant restaurant, HashMap<Product, Integer> basket, OrderStatus orderStatus, Double price) {
@@ -53,6 +55,9 @@ public class Order {
         return basket;
     }
 
+    public void setBasket(HashMap<Product, Integer> basket) {
+        this.basket = basket;
+    }
 //    public void setProductList(ArrayList<Product> productList) {
 //        this.productList = productList;
 //    }

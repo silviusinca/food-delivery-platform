@@ -12,10 +12,12 @@ public class Client extends Person {
         super(name, phoneNumber, email);
         this.address = address;
         this.clientId = UUID.randomUUID();
+        this.pastOrders = new ArrayList<>();
     }
 
     public Client() {
         this.clientId = UUID.randomUUID();
+        this.pastOrders = new ArrayList<>();
     }
 
     public UUID getClientId() {
@@ -24,6 +26,10 @@ public class Client extends Person {
 
     public void addToPastOrders(Order newOrder) {
         this.pastOrders.add(newOrder);
+    }
+
+    private void setup() {
+
     }
 
     @Override

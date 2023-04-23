@@ -1,9 +1,11 @@
 package com.fooddelivery.model;
 
 import java.util.Objects;
+import java.util.UUID;
 
 public class Product {
 
+    private UUID productId;
     private String name;
     private String description;
     private Double cost;
@@ -12,6 +14,7 @@ public class Product {
         this.name = name;
         this.description = description;
         this.cost = cost;
+        this.productId = UUID.randomUUID();
     }
 
     public String getName() {
@@ -38,6 +41,9 @@ public class Product {
         this.cost = cost;
     }
 
+    public UUID getProductId() {
+        return this.productId;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -58,6 +64,6 @@ public class Product {
                 "name='" + name + '\'' +
                 ", description='" + description + '\'' +
                 ", cost=" + cost +
-                '}';
+                " lei}";
     }
 }
