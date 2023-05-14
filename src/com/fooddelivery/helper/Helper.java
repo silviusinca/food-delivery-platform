@@ -4,6 +4,7 @@ import com.fooddelivery.model.Address;
 import com.fooddelivery.model.Driver;
 import com.fooddelivery.model.Product;
 import com.fooddelivery.model.Restaurant;
+import com.fooddelivery.service.RestaurantService;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -30,30 +31,36 @@ public class Helper {
 
     public static ArrayList<Restaurant> loadRestaurants() {
         ArrayList<Restaurant> restaurants = new ArrayList<>();
-        HashMap<Product, Integer> menu;
+        ArrayList<Product> menu;
 
-        menu = new HashMap<>();
-        menu.put(new Product("McChicken", "Burger cu pui", 12.0), 100);
-        menu.put(new Product("Cheeseburger", "Burger de vita cu cascaval", 10.5), 100);
-        menu.put(new Product("Big Mac", "Big Mac Carne vită", 11.0), 100);
-        menu.put(new Product("Cartofi prajiti", "Cartofi preparaţi în ulei, asezonați cu sare înainte de a fi serviţi", 7.5), 100);
-        menu.put(new Product("Coca Cola", "Coca Cola 0.5l", 6.0), 100);
-        menu.put(new Product("Fanta", "Fanta 0.5l", 6.0), 100);
-        menu.put(new Product("Apa", "Apa plata 0.5l", 5.0), 100);
-        restaurants.add(new Restaurant("McDonald's", new Address("Bulevardul General Gheorghe Magheru 24A"), menu));
+        menu = new ArrayList<>();
+        menu.add(new Product("McChicken", "Burger cu pui", 12.0));
+        menu.add(new Product("Cheeseburger", "Burger de vita cu cascaval", 10.5));
+        menu.add(new Product("Big Mac", "Big Mac Carne vită", 11.0));
+        menu.add(new Product("Cartofi prajiti", "Cartofi preparaţi în ulei, asezonați cu sare înainte de a fi serviţi", 7.5));
+        menu.add(new Product("Coca Cola", "Coca Cola 0.5l", 6.0));
+        menu.add(new Product("Fanta", "Fanta 0.5l", 6.0));
+        menu.add(new Product("Apa", "Apa plata 0.5l", 5.0));
 
-        menu = new HashMap<>();
-        menu.put(new Product("Margherita", "Sos de roșii și brânză Mozzarella", 31.5), 100);
-        menu.put(new Product("Europeana", "Sos de roșii, brânză Mozzarella, șuncă, cubulețe cu carne de vită, ciuperci", 39.5), 100);
-        menu.put(new Product("California", "Sos de roșii, brânză Mozzarella, piept de pui, porumb, ardei", 39.5), 100);
-        menu.put(new Product("Suprema", "Sos de roșii, brânză Mozzarella, salam Pepperoni, cubulețe cu carne de vită, ceapă, ciuperci, ardei", 44.5), 100);
-        menu.put(new Product("Nevada", "Sos de roșii, brânză Mozzarella, bacon, șuncă, ciuperci, ardei, măsline", 44.5), 100);
-        menu.put(new Product("Quattro stagioni", "Sos de roșii, brânză Mozzarella, șuncă, salam Pepperoni, ciuperci, ardei", 44.5), 100);
-        menu.put(new Product("Super Suprema", "Sos de roșii, brânză Mozzarella, salam Pepperoni, cubulețe cu carne de vită, cubulețe cu carne de porc, șuncă, ceapă, ciuperci, ardei, măsline", 49.0), 100);
-        menu.put(new Product("Limonada clasica", "Suc de lămâie, sirop de zahăr sau miere, apă", 17.0), 100);
-        menu.put(new Product("Coca-Cola Regular", "La pahar 300 ml", 7.0), 100);
-        menu.put(new Product("Apa minerala/plata", "330 ml", 7.5), 100);
-        restaurants.add(new Restaurant("Pizza Hut", new Address("Calea Dorobanti nr. 5-7"), menu));
+        Restaurant aux = new Restaurant("McDonald's", new Address("Bulevardul General Gheorghe Magheru 24A"), menu);
+        restaurants.add(aux);
+        RestaurantService.addRestaurant(aux);
+
+        menu = new ArrayList<>();
+        menu.add(new Product("Margherita", "Sos de roșii și brânză Mozzarella", 31.5));
+        menu.add(new Product("Europeana", "Sos de roșii, brânză Mozzarella, șuncă, cubulețe cu carne de vită, ciuperci", 39.5));
+        menu.add(new Product("California", "Sos de roșii, brânză Mozzarella, piept de pui, porumb, ardei", 39.5));
+        menu.add(new Product("Suprema", "Sos de roșii, brânză Mozzarella, salam Pepperoni, cubulețe cu carne de vită, ceapă, ciuperci, ardei", 44.5));
+        menu.add(new Product("Nevada", "Sos de roșii, brânză Mozzarella, bacon, șuncă, ciuperci, ardei, măsline", 44.5));
+        menu.add(new Product("Quattro stagioni", "Sos de roșii, brânză Mozzarella, șuncă, salam Pepperoni, ciuperci, ardei", 44.5));
+        menu.add(new Product("Super Suprema", "Sos de roșii, brânză Mozzarella, salam Pepperoni, cubulețe cu carne de vită, cubulețe cu carne de porc, șuncă, ceapă, ciuperci, ardei, măsline", 49.0));
+        menu.add(new Product("Limonada clasica", "Suc de lămâie, sirop de zahăr sau miere, apă", 17.0));
+        menu.add(new Product("Coca-Cola Regular", "La pahar 300 ml", 7.0));
+        menu.add(new Product("Apa minerala/plata", "330 ml", 7.5));
+
+        aux = new Restaurant("Pizza Hut", new Address("Calea Dorobanti nr. 5-7"), menu);
+        restaurants.add(aux);
+        RestaurantService.addRestaurant(aux);
 
         return restaurants;
     }

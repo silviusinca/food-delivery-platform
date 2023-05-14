@@ -60,10 +60,6 @@ public class Product {
 
     @Override
     public String toString() {
-        return "Product{" +
-                "name='" + name + '\'' +
-                ", description='" + description + '\'' +
-                ", cost=" + cost +
-                " lei}";
+        return this.name + ": " + this.description + ". Pret: " + this.cost + " lei.";
     }
 }

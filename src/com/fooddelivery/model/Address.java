@@ -32,6 +32,6 @@ public class Address {
 
     @Override
     public String toString() {
-        return "Adresa completa: " + address + ".";
+        return address;
     }
 }

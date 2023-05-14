@@ -1,17 +1,19 @@
 package com.fooddelivery.model;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Objects;
 import java.util.UUID;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class Restaurant {
 
     private UUID restaurantId;
     private Address address;
     private String restaurantName;
-    private HashMap<Product, Integer> menu; // key = produs si value = cantitatea disponibila
+    private ArrayList<Product> menu; // key = produs si value = cantitatea disponibila
 
-    public Restaurant(String restaurantName, Address address, HashMap<Product, Integer> menu) {
+    public Restaurant(String restaurantName, Address address, ArrayList<Product> menu) {
         this.restaurantName = restaurantName;
         this.address = address;
         this.menu = menu;
@@ -26,12 +28,12 @@ public class Restaurant {
         this.address = address;
     }
 
-    public HashMap<Product, Integer> getMenu() {
+    public ArrayList<Product> getMenu() {
         return menu;
     }
 
-    public void addProductToMenu(Product product, Integer quantity) {
-        this.menu.put(product, quantity);
+    public void addProductToMenu(Product product) {
+        this.menu.add(product);
     }
 
     public void deleteProductFromMenu(Product product) {
@@ -46,7 +48,7 @@ public class Restaurant {
         this.restaurantName = restaurantName;
     }
 
-    public void setMenu(HashMap<Product, Integer> menu) {
+    public void setMenu(ArrayList<Product> menu) {
         this.menu = menu;
     }
 
@@ -56,10 +58,7 @@ public class Restaurant {
 
     @Override
     public String toString() {
-        return  this.restaurantName + "{" +
-                address.toString() +
-                ", products=" + menu.toString() +
-                '}';
+        return "Restaurantul " + this.restaurantName + " se afla la adresa " + this.address + " si are urmatorul meniu: \n" + printMenu();
     }
 
     @Override
@@ -73,5 +72,14 @@ public class Restaurant {
     @Override
     public int hashCode() {
         return Objects.hash(restaurantName, address, menu);
+    }
+
+    public String printMenu() {
+        StringBuilder str = new StringBuilder();
+        for (int i = 0; i < menu.size(); i++) {
+            str.append(i+1).append(". ").append(menu.get(i)).append("\n");
+        }
+
+        return str.toString();
     }
 }

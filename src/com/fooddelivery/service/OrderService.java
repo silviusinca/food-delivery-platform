@@ -53,7 +53,6 @@ public class OrderService {
 
         Driver driver = Helper.getRandomDriver();
         newOrder.setDriver(driver);
-        // insert driver here
 
         newOrder.setOrderStatus(OrderStatus.PICKED_UP);
         System.out.println("Our driver, " + driver.getName() + ", picked up the order! They are coming right away!");
@@ -61,10 +60,10 @@ public class OrderService {
 
         newOrder.setOrderStatus(OrderStatus.DELIVERED);
         System.out.println("Thank you for using our app! Enjoy your food and don't forget to rate your driver!");
-
-
     }
 
+
+    /// TO BE IMPLEMENTED
     public UUID cancelOrder(UUID orderId) { // return id of cancelled order
         Order order = getOrderById(orderId);
         order.setOrderStatus(OrderStatus.CANCELLED);
