@@ -7,10 +7,6 @@ import java.util.ArrayList;
 public class RestaurantService {
     private static final ArrayList<Restaurant> restaurants = new ArrayList<>();
 
-//    public RestaurantService() {
-//        this.restaurants = new ArrayList<>();
-//    }
-
     public static void addRestaurant(Restaurant restaurant) {
         restaurants.add(restaurant);
     }

@@ -1,10 +1,12 @@
 package com.fooddelivery.model;
 
+import java.util.ArrayList;
 import java.util.UUID;
 
 public class Driver extends Person {
     private final UUID driverId;
     private Double stars; // numarul de stele pe care il are livratorul pe platforma
+    private ArrayList<Review> reviews;
 
     public Driver(String name, String phoneNumber, String email, Double stars) {
         super(name, phoneNumber, email);

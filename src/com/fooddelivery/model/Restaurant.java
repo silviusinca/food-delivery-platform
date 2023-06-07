@@ -1,5 +1,6 @@
 package com.fooddelivery.model;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Objects;
@@ -12,6 +13,7 @@ public class Restaurant {
     private Address address;
     private String restaurantName;
     private ArrayList<Product> menu; // key = produs si value = cantitatea disponibila
+    private ArrayList<Review> reviews;
 
     public Restaurant(String restaurantName, Address address, ArrayList<Product> menu) {
         this.restaurantName = restaurantName;
