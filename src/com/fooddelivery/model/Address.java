@@ -3,35 +3,41 @@ package com.fooddelivery.model;
 import java.util.Objects;
 
 public class Address {
-    private String address;
+//    private String address;
+    private String city;
+    private String street;
 
-    public Address(String address) {
-        this.address = address;
+    public Address(String city, String street) {
+        this.city = city;
+        this.street = street;
     }
 
-    public String getAddress() {
-        return address;
+    public String getCity() {
+        return city;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getStreet() {
+        return street;
+    }
+
+    public void setStreet(String street) {
+        this.street = street;
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Address address1 = (Address) o;
-        return Objects.equals(address, address1.address);
+        Address address = (Address) o;
+        return Objects.equals(city, address.city) && Objects.equals(street, address.street);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(address);
-    }
-
-    @Override
-    public String toString() {
-        return address;
+        return Objects.hash(city, street);
     }
 }

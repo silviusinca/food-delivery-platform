@@ -6,30 +6,27 @@ import java.util.UUID;
 public class Client extends Person {
     private final UUID clientId;
     private Address address;
-    private ArrayList<Order> pastOrders;
 
     public Client(String name, String phoneNumber, String email, Address address) {
         super(name, phoneNumber, email);
         this.address = address;
         this.clientId = UUID.randomUUID();
-        this.pastOrders = new ArrayList<>();
     }
 
     public Client() {
         this.clientId = UUID.randomUUID();
-        this.pastOrders = new ArrayList<>();
     }
 
     public UUID getClientId() {
         return clientId;
     }
 
-    public void addToPastOrders(Order newOrder) {
-        this.pastOrders.add(newOrder);
+    public Address getAddress() {
+        return address;
     }
 
-    private void setup() {
-
+    public void setAddress(Address address) {
+        this.address = address;
     }
 
     @Override

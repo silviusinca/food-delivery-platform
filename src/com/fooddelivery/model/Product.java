@@ -1,5 +1,7 @@
 package com.fooddelivery.model;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
 
@@ -9,12 +11,15 @@ public class Product {
     private String name;
     private String description;
     private Double cost;
+    private List<Restaurant> restaurants;
 
+    public Product(){}
     public Product(String name, String description, Double cost) {
         this.name = name;
         this.description = description;
         this.cost = cost;
         this.productId = UUID.randomUUID();
+        this.restaurants = new ArrayList<>();
     }
 
     public String getName() {
@@ -43,6 +48,18 @@ public class Product {
 
     public UUID getProductId() {
         return this.productId;
+    }
+
+    public void setProductId(UUID productId) {
+        this.productId = productId;
+    }
+
+    public List<Restaurant> getRestaurants() {
+        return restaurants;
+    }
+
+    public void setRestaurants(List<Restaurant> restaurants) {
+        this.restaurants = restaurants;
     }
 
     @Override

@@ -15,12 +15,14 @@ public class Restaurant {
     private ArrayList<Product> menu; // key = produs si value = cantitatea disponibila
     private ArrayList<Review> reviews;
 
-    public Restaurant(String restaurantName, Address address, ArrayList<Product> menu) {
+    public Restaurant(String restaurantName, Address address) {
         this.restaurantName = restaurantName;
         this.address = address;
-        this.menu = menu;
+        this.menu = new ArrayList<>();
         this.restaurantId = UUID.randomUUID();
     }
+
+    public Restaurant(){}
 
     public Address getAddress() {
         return address;
@@ -57,6 +59,11 @@ public class Restaurant {
     public UUID getRestaurantId() {
         return restaurantId;
     }
+
+    public void setRestaurantId(UUID restaurantId) {
+        this.restaurantId = restaurantId;
+    }
+
 
     @Override
     public String toString() {
